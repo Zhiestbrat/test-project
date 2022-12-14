@@ -31,4 +31,18 @@ public class Film {
 
     @Column(name = "FilmYear")
     private int year;
+    @ManyToOne
+    @JoinColumn(name = "user_id" , referencedColumnName = "id")
+    private User user;
+    @Override
+    public String toString() {
+        return "Film{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", genre='" + genre + '\'' +
+                ", country='" + country + '\'' +
+                ", year=" + year +
+                '}';
+    }
+
 }

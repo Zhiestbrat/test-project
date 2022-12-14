@@ -25,15 +25,16 @@ public class WebSecurityConfig {
         http.csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/register/**").permitAll()
-                .antMatchers("/index").permitAll()
-                .antMatchers("/users").hasRole("ADMIN")
-                .antMatchers("/list").hasRole("users")
+                .antMatchers("/login/**").permitAll()
+                .antMatchers("/users/**").hasRole("ADMIN")
+                .antMatchers("/","/index").permitAll()
+                .anyRequest().authenticated()
                 .and()
                 .formLogin(
                         form -> form
                                 .loginPage("/login")
                                 .loginProcessingUrl("/login")
-                                .defaultSuccessUrl("/login")
+                                .defaultSuccessUrl("/list")
                                 .permitAll()
                 ).logout(
                         logout -> logout

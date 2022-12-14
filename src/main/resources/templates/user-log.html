@@ -30,27 +30,20 @@ navigation">
 </nav>
 <div class="container">
   <hr/>
-  <a th:href="@{/addFilm}" class="btn btn-primary">Add Movie</a>
   <br/><br/>
-  <table class="table table-bordered table-striped" id="filmTable">
+  <table class="table table-bordered table-striped" id="UserTable">
     <thead>
     <tr>
-      <th>Genre</th>
-      <th>Name</th>
-      <th>Country</th>
-      <th>Year</th>
+      <th>Id</th>
+      <th>Data</th>
+      <th>Description</th>
     </tr>
     </thead>
     <tbody>
-    <tr th:each="film: ${user.getFilms()}">
-      <td th:text="${film.genre}" />
-      <td th:text="${film.name}" />
-      <td th:text="${film.country}" />
-      <td th:text="${film.year}" />
-      <td>
-        <a th:href="@{/showUpdateForm(filmId=${film.id})}" class="btn btn-info">Update</a>
-        <a th:href="@{/deleteFilm(filmId=${film.id})}" class="btn btn-danger ml2">Delete</a>
-      </td>
+    <tr th:each="log: ${user.getLogs()}">
+      <td th:text="${log.id}" />
+      <td th:text="${log.date}" />
+      <td th:text="${log.description}" />
     </tr>
     </tbody>
   </table>
@@ -59,7 +52,7 @@ navigation">
 <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt1.10.25/datatables.min.js"></script>
 <script>
   $(document).ready(function() {
-    $("#filmTable").DateTable({
+    $("#UserTable").DateTable({
       'aoColumnDefs': [{
         'bSortable': false,
         'aTargets': [-1] /* 1st one, start by the right */

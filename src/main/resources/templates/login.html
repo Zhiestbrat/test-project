@@ -43,6 +43,11 @@
         <div class="alert alert-success"> You have been logged
           out.</div>
       </div>
+      <div th:if="${param.registration_success}">
+        <div class="alert alert-info">
+          You have successfully registered our app!
+        </div>
+      </div>
       <div class="card">
         <div class="card-header">
           <h2 class="text-center">Login Form</h2>
